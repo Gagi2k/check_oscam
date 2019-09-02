@@ -107,7 +107,7 @@ sub get_diff{
 sub get_entitlementdate{
   my ($url, $entitlementdate);
 
-  $url = "curl --digest -s -u ".$user.":".$password." http://".$hostname."/entitlements.html?label=".$reader. " | grep tier | awk -F\"<TD>\" {'print \$5,\$8'} |  grep \".$subscription.\" | awk -F\"</TD>\" {'print \$2'}";
+  $url = "curl --digest -s -u ".$user.":".$password." http://".$hostname."/entitlements.html?label=".$reader. " | grep tier | awk -F\"<TD>\" {'print \$5,\$8'} |  grep \"$subscription\" | awk -F\"</TD>\" {'print \$2'}";
   $entitlementdate = `$url`;
 
   return $entitlementdate;
